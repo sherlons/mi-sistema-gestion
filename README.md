@@ -1,3 +1,5 @@
+![Portada del Proyecto](preview.png)
+
 # 🚀 Sistema de Gestión Full-Stack
 Sistema integral para la gestión de ventas e inventario diseñado con una arquitectura modular.
 
