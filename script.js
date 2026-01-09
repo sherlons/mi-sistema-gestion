@@ -270,9 +270,59 @@ function generarFactura(datosVenta, nombreCliente) {
 
     doc.save(`Factura_${nombreCliente.replace(/\s+/g, '_')}.pdf`);
 }
+//  GUARDIÁN
+if (!localStorage.getItem('autenticado') && !window.location.href.includes('login.html')) {
+    window.location.href = 'login.html';
+}
+
+// Función para cerrar sesión
+function cerrarSesion() {
+    localStorage.removeItem('autenticado');
+    window.location.href = 'login.html';
+}
+// Simulación de base de datos de usuarios
+let usuarios = JSON.parse(localStorage.getItem('db_usuarios')) || [
+    { u: 'admin', p: '1234', rol: 'gerente' }
+];
+
+function registrarUsuario() {
+    const u = document.getElementById('reg-user').value;
+    const p = document.getElementById('reg-pass').value;
+    const rol = document.getElementById('reg-rol').value;
+
+    if(!u || !p) return alert("Completa los datos");
+
+    usuarios.push({ u, p, rol });
+    localStorage.setItem('db_usuarios', JSON.stringify(usuarios));
+    alert("Usuario registrado. Ya puedes iniciar sesión.");
+}
+
+function validarAcceso() {
+    const user = document.getElementById('user').value;
+    const pass = document.getElementById('pass').value;
+
+    const encontrado = usuarios.find(v => v.u === user && v.p === pass);
+
+    if (encontrado) {
+        localStorage.setItem('autenticado', 'true');
+        localStorage.setItem('rol', encontrado.rol); // Guardamos el ROL
+        localStorage.setItem('usuarioNombre', encontrado.u);
+        window.location.href = 'index.html';
+    } else {
+        alert("Datos incorrectos");
+    }
+}
 
 // Modifica el DOMContentLoaded para que también cargue ventas
 document.addEventListener('DOMContentLoaded', () => {
-    cargarDatos();
-    cargarVentas(); 
+    const rol = localStorage.getItem('rol');
+    
+    if (rol === 'cliente') {
+        // Si es cliente, ocultamos el botón de Inventario y el de Historial
+        const btnInventario = document.getElementById('btn-inventario');
+        const btnHistorial = document.getElementById('btn-historial');
+        
+        if(btnInventario) btnInventario.style.display = 'none';
+        if(btnHistorial) btnHistorial.style.display = 'none';
+    }
 });
