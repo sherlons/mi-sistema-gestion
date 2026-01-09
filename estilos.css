@@ -1,53 +1,120 @@
-/* colores primarios */
+/* Variables para cambiar colores fácilmente */
 :root {
-    --color-primario: #5D4037;    /* Café oscuro (Títulos y Nav) */
-    --color-secundario: #E0AC69;  /* Ocre (Botones de pedido) */
-    --color-acento: #FF8A65;      /* Naranja suave (Inventario) */
-    --color-fondo: #f4f4f4;       /* Crema (Fondo de pantalla) */
-    --color-blanco: #ffffff;
-    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-main: #2d3436;
+    --accent-color: #00b894; /* Un verde suave y moderno */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 body {
-    background-color: var(--color-fondo);
-    font-family: var(--fuente-principal);
-    color: var(--color-primario);
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-/*  tarjetas */
-.card-inventario {
-    border-top: 5px solid var(--color-acento);
-    background: var(--color-blanco);
+/* Contenedor centrado y limpio */
+.container {
+    max-width: 900px;
+    width: 100%;
+    background: var(--card-bg);
+    padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow);
 }
 
-.btn-principal {
-    background-color: var(--color-primario);
-    color: white;
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #636e72;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+/* Estilo de la tabla (Historial y Pedidos) */
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    width: 100%;
+}
+
+.table thead th {
     border: none;
-    transition: 0.3s;
+    color: #b2bec3;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
-.btn-principal:hover {
-    background-color: var(--color-secundario);
+.table tbody tr {
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: transform 0.2s;
+}
+
+.table tbody tr:hover {
+    transform: scale(1.01);
+}
+
+/* El cuadro de Total Acumulado */
+.total-box {
+    background-color: #fff9db; /* Amarillo suave como la imagen */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border-left: 5px solid #fab005;
+}
+
+.total-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+/* Botones modernos */
+.btn-custom {
+    background-color: var(--text-main);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 25px;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: var(--accent-color);
     transform: translateY(-2px);
 }
-/* Botones con transición suave */
-.btn-custom, .card, button {
+/* Espaciado para que las tarjetas no se peguen al borde del navegador */
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Estilo para las tarjetas de detalle */
+.cart-card {
+    border: 1px solid #eee;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Mejorar los botones de Bootstrap */
+.btn-lg {
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
-}
-
-/* Scrollbar personalizada para que se vea moderno */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-thumb {
-    background: var(--color-primario);
-    border-radius: 10px;
+.btn-lg:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }

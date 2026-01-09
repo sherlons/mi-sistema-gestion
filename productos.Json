@@ -28,15 +28,5 @@
     "id": 9,
     "nombre": "Hamburguesa",
     "precio": 18000
-  },
-  {
-    "id": 10,
-    "nombre": "Carne asada ",
-    "precio": 32
-  },
-  {
-    "id": 11,
-    "nombre": "Carne asada ",
-    "precio": 32
   }
 ]

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="estilos.css">
     <meta charset="UTF-8">
-    <title>Menú Principal - Mi Tienda</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.min.css" rel="stylesheet">
-   
+    <title>Menú Principal - Sistema de Gestión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="hero-card">
-        <h1 style="color: #5D4037;">🥐 Sistema de Gestión</h1>
-        <p class="text-muted">Selecciona el módulo que deseas utilizar</p>
-         <div class="mt-4">
-             <a href="inventario.html" class="btn-custom" style="background: #FF8A65;">📦 Módulo Inventario</a>
-             <a href="pedidos.html" class="btn-custom" style="background: #E0AC69;">🛒 Módulo Pedidos</a>
-             <a href="historial.html" class="btn-custom" style="background: #5D4037;">📊 Historial</a>
-         </div>
+    <div class="container text-center">
+        <div class="py-5">
+            <h1 style="color: #5D4037; font-size: 3.5rem;">🥐</h1>
+            <h1 style="color: #5D4037;">Sistema de Gestión</h1>
+            <p class="text-muted">Selecciona el módulo para comenzar a trabajar</p>
+            
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+                <a href="gestion.html" class="btn-custom" style="background: #FF8A65; text-decoration: none;">📦 Inventario</a>
+                <a href="pedidos.html" class="btn-custom" style="background: #E0AC69; text-decoration: none;">🛒 Realizar Pedido</a>
+                <a href="historial.html" class="btn-custom" style="background: #5D4037; text-decoration: none;">📊 Ver Historial</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
