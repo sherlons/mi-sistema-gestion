@@ -1,0 +1,150 @@
+[
+  {
+    "id": 1,
+    "fecha": "7/1/2026, 12:44:09 p. m.",
+    "productos": [
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      },
+      {
+        "nombre": "Pizza Familiar",
+        "precio": 25000
+      },
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      }
+    ],
+    "total": 58000
+  },
+  {
+    "id": 2,
+    "fecha": "7/1/2026, 12:44:38 p. m.",
+    "productos": [
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      },
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      }
+    ],
+    "total": 113000
+  },
+  {
+    "id": 3,
+    "fecha": "7/1/2026, 12:55:31 p. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      },
+      {
+        "nombre": "Pizza Familiar",
+        "precio": 25000
+      },
+      {
+        "nombre": "obleas",
+        "precio": 5000
+      }
+    ],
+    "total": 63000
+  },
+  {
+    "id": 4,
+    "fecha": "8/1/2026, 1:18:39 a. m.",
+    "productos": [
+      {
+        "nombre": "Pizza Familiar",
+        "precio": 25000
+      },
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      },
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      }
+    ],
+    "total": 76000
+  },
+  {
+    "id": 5,
+    "fecha": "8/1/2026, 1:19:42 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "Pizza Familiar",
+        "precio": 25000
+      }
+    ],
+    "total": 40000
+  },
+  {
+    "id": 6,
+    "fecha": "8/1/2026, 2:53:38 p. m.",
+    "productos": [
+      {
+        "nombre": "Oblea Cansilla",
+        "precio": 5000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      }
+    ],
+    "total": 85000
+  },
+  {
+    "id": 7,
+    "fecha": "8/1/2026, 2:55:12 p. m.",
+    "productos": [
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      }
+    ],
+    "total": 98000
+  },
+  {
+    "id": 8,
+    "fecha": "8/1/2026, 3:10:14 p. m.",
+    "productos": [
+      {
+        "nombre": "Carne asada ",
+        "precio": 32
+      },
+      {
+        "nombre": "Pizza Familiar",
+        "precio": 25000
+      },
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      }
+    ],
+    "total": 40032
+  }
+]

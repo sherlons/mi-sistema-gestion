@@ -1,0 +1,53 @@
+/* colores primarios */
+:root {
+    --color-primario: #5D4037;    /* Café oscuro (Títulos y Nav) */
+    --color-secundario: #E0AC69;  /* Ocre (Botones de pedido) */
+    --color-acento: #FF8A65;      /* Naranja suave (Inventario) */
+    --color-fondo: #f4f4f4;       /* Crema (Fondo de pantalla) */
+    --color-blanco: #ffffff;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    font-family: var(--fuente-principal);
+    color: var(--color-primario);
+}
+
+/*  tarjetas */
+.card-inventario {
+    border-top: 5px solid var(--color-acento);
+    background: var(--color-blanco);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.btn-principal {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-principal:hover {
+    background-color: var(--color-secundario);
+    transform: translateY(-2px);
+}
+/* Botones con transición suave */
+.btn-custom, .card, button {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+/* Scrollbar personalizada para que se vea moderno */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-primario);
+    border-radius: 10px;
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 3,
+    "nombre": "Perro Caliente",
+    "precio": 15000
+  },
+  {
+    "id": 5,
+    "nombre": "Pizza Familiar",
+    "precio": 25000
+  },
+  {
+    "id": 6,
+    "nombre": "empanadas ",
+    "precio": 80000
+  },
+  {
+    "id": 7,
+    "nombre": "obleas",
+    "precio": 5000
+  },
+  {
+    "id": 8,
+    "nombre": "Oblea Cansilla",
+    "precio": 5000
+  },
+  {
+    "id": 9,
+    "nombre": "Hamburguesa",
+    "precio": 18000
+  },
+  {
+    "id": 10,
+    "nombre": "Carne asada ",
+    "precio": 32
+  },
+  {
+    "id": 11,
+    "nombre": "Carne asada ",
+    "precio": 32
+  }
+]

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <title>Módulo Pedidos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a href="index.html" class="btn btn-outline-light btn-sm">← Volver al Menú</a>
+            <span class="navbar-brand">🛒 Punto de Venta</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="zona-ventas" class="row g-3"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-pedido p-4 shadow-sm sticky-top" style="top: 20px;">
+                    <h4>Detalle <span id="items-count" class="badge bg-danger rounded-pill">0</span></h4>
+                    <div id="detalle-carrito" class="my-3 p-2 bg-light rounded border" style="min-height: 100px;"></div>
+                    <h3 id="total-container" class="text-center text-success">$0</h3>
+                    <button class="btn btn-success btn-lg w-100 mt-3" onclick="finalizarPedido()">Finalizar Venta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
