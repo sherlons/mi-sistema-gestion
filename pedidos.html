@@ -19,19 +19,21 @@
             
             <div class="col-md-5">
                 <div class="cart-card p-4 shadow-sm bg-white rounded">
-                    <h4>Detalle del Pedido</h4>
-                    <div id="detalle-venta" class="my-3" style="min-height: 150px;">
+                    <h4>Detalle del Pedido<span id="items-count" class="badge bg-danger">0</span></h4>
+                    <div id="detalle-carrito" class="my-3" style="min-height: 150px;">
                         <p class="text-muted small">No hay productos seleccionados...</p>
                     </div>
                     <div class="total-box mt-auto">
                         <small>Total a Cobrar:</small>
                         <div class="total-amount" id="total">$0</div>
+                        <div class="total-amount" id="total-container">$0</div>
                     </div>
                     <button class="btn btn-success btn-lg w-100 mt-3" onclick="finalizarPedido()">Finalizar y Cobrar</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -69,15 +69,15 @@ function dibujarZonaVentas(productos) {
     div.innerHTML = '';
     
     productos.forEach(p => {
-        // Usamos comillas invertidas `` y nos aseguramos de que los strings vayan entre comillas simples ''
         div.innerHTML += `
-           <div class="col-md-4 mb-3">
-                <div class="card h-100 text-center p-3 shadow-sm border-0" 
-                     style="cursor:pointer; background-color: #FFE0B2;" 
-                     onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 text-center p-3 shadow-sm border-0" style="background-color: #fff9db; border-left: 5px solid #fab005 !important;">
                     <div class="fw-bold" style="color: #5D4037;">${p.nombre}</div>
-                    <div class="badge bg-white text-dark mt-2">$${p.precio}</div>
-                    <div class="small text-muted mt-2">🛒 Agregar</div>
+                    <div class="badge bg-white text-dark mt-2 border">$${p.precio}</div>
+                    <button class="btn btn-sm btn-warning mt-3 fw-bold" 
+                            onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">
+                        🛒 Agregar
+                    </button>
                 </div>
             </div>`;
     });
@@ -139,17 +139,41 @@ async function borrarProducto(id) {
 
 async function finalizarPedido() {
     if (carrito.length === 0) return alert("Agrega productos");
+    
     const total = carrito.reduce((s, i) => s + i.precio, 0);
 
-    await fetch(`${API_URL}/ventas`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productos: carrito, total })
-    });
+    try {
+        //  Intentamos guardar en el servidor
+        const res = await fetch(`${API_URL}/ventas`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productos: carrito, total })
+        });
 
-    alert("¡Venta Exitosa!");
-    carrito = [];
-    dibujarCarrito();
+        //  Verificamos si la respuesta fue exitosa
+        if (res.ok) {
+            // Preparamos los datos para la factura
+            const datosParaFactura = {
+                productos: [...carrito], // Copia del carrito actual
+                total: total
+            };
+
+            //  ¡GENERAMOS LA FACTURA! 📄
+            generarFactura(datosParaFactura);
+
+            alert("¡Venta Exitosa y Factura Generada!");
+
+            //  Limpiamos todo
+            carrito = [];
+            dibujarCarrito();
+        } else {
+            alert("Hubo un error al procesar la venta en el servidor.");
+        }
+
+    } catch (error) {
+        console.error("Error en finalizarPedido:", error);
+        alert("No se pudo conectar con el servidor.");
+    }
 }
 
 function cargarParaEditar(nombre, precio) {
@@ -190,6 +214,51 @@ async function cargarVentas() {
     } catch (error) {
         console.error("Error cargando ventas:", error);
     }
+}
+function generarFactura(datosVenta) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Configuración de estilo
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.text("RECIBO DE VENTA", 105, 20, { align: "center" });
+
+    // Información de la tienda
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("🥐 Mi Panadería Artesanal", 20, 40);
+    doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 20, 47);
+    doc.text(`ID Venta: #00${Math.floor(Math.random() * 1000)}`, 20, 54);
+
+    doc.line(20, 60, 190, 60); // Línea divisoria
+
+    // Encabezados de tabla
+    doc.setFont("helvetica", "bold");
+    doc.text("Producto", 20, 70);
+    doc.text("Precio", 170, 70, { align: "right" });
+
+    // Listar productos
+    doc.setFont("helvetica", "normal");
+    let y = 80;
+    datosVenta.productos.forEach(p => {
+        doc.text(p.nombre, 20, y);
+        doc.text(`$${p.precio}`, 170, y, { align: "right" });
+        y += 10;
+    });
+
+    doc.line(20, y, 190, y);
+    
+    // Total final
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text(`TOTAL PAGADO: $${datosVenta.total}`, 170, y + 15, { align: "right" });
+
+    doc.setFontSize(10);
+    doc.text("¡Gracias por su compra!", 105, y + 30, { align: "center" });
+
+    // Descargar el archivo
+    doc.save(`Factura_Venta_${Date.now()}.pdf`);
 }
 
 // Modifica el DOMContentLoaded para que también cargue ventas

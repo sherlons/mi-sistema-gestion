@@ -146,5 +146,24 @@
       }
     ],
     "total": 40032
+  },
+  {
+    "id": 9,
+    "fecha": "9/1/2026, 8:04:01 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      },
+      {
+        "nombre": "Oblea Cansilla",
+        "precio": 5000
+      }
+    ],
+    "total": 38000
   }
 ]
