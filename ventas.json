@@ -165,5 +165,100 @@
       }
     ],
     "total": 38000
+  },
+  {
+    "id": 10,
+    "fecha": "9/1/2026, 8:14:46 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "Oblea Cansilla",
+        "precio": 5000
+      },
+      {
+        "nombre": "Hamburguesa",
+        "precio": 18000
+      }
+    ],
+    "total": 38000
+  },
+  {
+    "id": 11,
+    "fecha": "9/1/2026, 8:19:29 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      },
+      {
+        "nombre": "obleas",
+        "precio": 5000
+      }
+    ],
+    "total": 100000
+  },
+  {
+    "id": 12,
+    "fecha": "9/1/2026, 8:28:17 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      },
+      {
+        "nombre": "obleas",
+        "precio": 5000
+      }
+    ],
+    "total": 100000
+  },
+  {
+    "id": 13,
+    "fecha": "9/1/2026, 8:30:37 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      },
+      {
+        "nombre": "obleas",
+        "precio": 5000
+      }
+    ],
+    "total": 100000
+  },
+  {
+    "id": 14,
+    "fecha": "9/1/2026, 8:30:54 a. m.",
+    "productos": [
+      {
+        "nombre": "Perro Caliente",
+        "precio": 15000
+      },
+      {
+        "nombre": "Pizza Familiar",
+        "precio": 25000
+      },
+      {
+        "nombre": "empanadas ",
+        "precio": 80000
+      }
+    ],
+    "total": 120000
   }
 ]

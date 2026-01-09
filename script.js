@@ -139,7 +139,7 @@ async function borrarProducto(id) {
 
 async function finalizarPedido() {
     if (carrito.length === 0) return alert("Agrega productos");
-    
+    const nombreCliente = prompt("Ingrese el Nombre del Cliente" || "Consumidor Final");
     const total = carrito.reduce((s, i) => s + i.precio, 0);
 
     try {
@@ -157,10 +157,9 @@ async function finalizarPedido() {
                 productos: [...carrito], // Copia del carrito actual
                 total: total
             };
-
-            //  ¡GENERAMOS LA FACTURA! 📄
-            generarFactura(datosParaFactura);
-
+            //  ¡GENERAMOS LA FACTURA! 
+            generarFactura(datosParaFactura, nombreCliente);
+                   
             alert("¡Venta Exitosa y Factura Generada!");
 
             //  Limpiamos todo
@@ -215,50 +214,61 @@ async function cargarVentas() {
         console.error("Error cargando ventas:", error);
     }
 }
-function generarFactura(datosVenta) {
+function generarFactura(datosVenta, nombreCliente) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Configuración de estilo
+    // Estética de cabecera
+    doc.setFillColor(250, 176, 5); // Color naranja/amarillo de tu marca
+    doc.rect(0, 0, 210, 40, 'F');
+    
+    doc.setTextColor(255, 255, 255);
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(22);
-    doc.text("RECIBO DE VENTA", 105, 20, { align: "center" });
+    doc.setFontSize(24);
+    doc.text("MI PANADERÍA ARTESANAL", 105, 25, { align: "center" });
 
-    // Información de la tienda
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-    doc.text("🥐 Mi Panadería Artesanal", 20, 40);
-    doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 20, 47);
-    doc.text(`ID Venta: #00${Math.floor(Math.random() * 1000)}`, 20, 54);
-
-    doc.line(20, 60, 190, 60); // Línea divisoria
-
-    // Encabezados de tabla
+    // Información del Cliente y Venta
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
-    doc.text("Producto", 20, 70);
-    doc.text("Precio", 170, 70, { align: "right" });
-
-    // Listar productos
+    doc.text("CLIENTE:", 20, 55);
     doc.setFont("helvetica", "normal");
+    doc.text(nombreCliente.toUpperCase(), 45, 55);
+    
+    doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 150, 55);
+    doc.line(20, 60, 190, 60); 
+
+    // Tabla de productos
+    doc.setFont("helvetica", "bold");
+    doc.text("Cant.", 20, 70);
+    doc.text("Producto", 40, 70);
+    doc.text("Subtotal", 170, 70, { align: "right" });
+    doc.line(20, 72, 190, 72);
+
     let y = 80;
-    datosVenta.productos.forEach(p => {
-        doc.text(p.nombre, 20, y);
-        doc.text(`$${p.precio}`, 170, y, { align: "right" });
+    doc.setFont("helvetica", "normal");
+    
+    datosVenta.productos.forEach((p, index) => {
+        doc.text("1", 20, y);
+        doc.text(p.nombre, 40, y);
+        doc.text(`$${p.precio.toLocaleString()}`, 170, y, { align: "right" });
         y += 10;
     });
 
+    // Total Final
     doc.line(20, y, 190, y);
-    
-    // Total final
-    doc.setFontSize(16);
+    doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text(`TOTAL PAGADO: $${datosVenta.total}`, 170, y + 15, { align: "right" });
+    doc.text("TOTAL A PAGAR:", 120, y + 15);
+    doc.setTextColor(34, 139, 34); // Verde éxito
+    doc.text(`$${datosVenta.total.toLocaleString()}`, 170, y + 15, { align: "right" });
 
-    doc.setFontSize(10);
-    doc.text("¡Gracias por su compra!", 105, y + 30, { align: "center" });
+    // Pie de página
+    doc.setTextColor(150, 150, 150);
+    doc.setFontSize(9);
+    doc.text("Gracias por apoyar lo artesanal. ¡Vuelva pronto!", 105, 280, { align: "center" });
 
-    // Descargar el archivo
-    doc.save(`Factura_Venta_${Date.now()}.pdf`);
+    doc.save(`Factura_${nombreCliente.replace(/\s+/g, '_')}.pdf`);
 }
 
 // Modifica el DOMContentLoaded para que también cargue ventas
